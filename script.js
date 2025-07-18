@@ -1,17 +1,17 @@
 document.addEventListener("contextmenu", e => e.preventDefault())
 
 const container = document.getElementById("grid-container");
-let isRightClicking = false;
+let isLeftClicking = false;
 
 document.addEventListener("mousedown", e => {
-    if (e.button === 2) {
-        isRightClicking = true;
+    if (e.button === 0) {
+        isLeftClicking = true;
     }
 });
 
 document.addEventListener("mouseup", e => {
-    if (e.button === 2) {
-        isRightClicking = false;
+    if (e.button === 0) {
+        isLeftClicking = false;
     }
 });
 
@@ -21,12 +21,12 @@ for (let i = 0; i < 16 * 16; i++) {
     square.classList.add("square");
 
     square.addEventListener("mouseover", e => {
-        if (isRightClicking) {
-            square.classList.add("rightClickHovered");
-            square.classList.remove("hovered");
-        } else {
+        if (isLeftClicking) {
             square.classList.add("hovered");
             square.classList.remove("rightClickHovered");
+        } else {
+            square.classList.add("rightClickHovered");
+            square.classList.remove("hovered");
         }
     });
 
